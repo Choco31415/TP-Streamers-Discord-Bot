@@ -17,28 +17,33 @@ async def role(message, args):
     :return:
     '''
     # Get a role object
-    role = get(message.guild.roles, name=args[0])
+    server_roles = server_settings[str(message.guild.id)]["role_ids"]
 
     # Check that the role exists to be safe
-    if role is None:
-        await message.channel.send("This server doesn't support role {}!".format(args[0]))
+    if not args[0].id in server_roles:
+        await message.channel.send("The role {} isn't allowed!".format(args[0].name))
     else:
         try:
-            if role in message.author.roles:
-                await message.author.remove_roles(role)
+            if args[0] in message.author.roles:
+                await message.author.remove_roles(args[0])
             else:
-                await message.author.add_roles(role)
+                await message.author.add_roles(args[0])
         except discord.errors.Forbidden:
-            await message.channel.send("The bot is not powerful enough to handle {}!".format(args[0]))
+            await message.channel.send("The bot is not powerful enough to handle {}!".format(args[0].name))
 async def help_role(message):
-    roles = server_settings[message.guild.id]["roles"]
-    print(roles)
-    if len(roles) == 0:
-        roles_message = "None"
-    else:
-        roles_message = ", ".join(roles)
+    role_ids = server_settings[str(message.guild.id)]["role_ids"]
 
-    return "adds/removes role from a player, supported roles are: {}".format(roles_message)
+    role_names = []
+    for id in role_ids:
+        role = get(message.guild.roles, id=id)
+        role_names.append(role.name)
+
+    if len(role_ids) == 0:
+        role_message = "None"
+    else:
+        role_message = ", ".join(role_names)
+
+    return "adds/removes role from a player, supported roles are: {}".format(role_message)
 
 register_command(func=role,
                  name="role",

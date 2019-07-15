@@ -13,15 +13,19 @@ async def set_roles(message, args):
     :param args:
     :return:
     '''
-    if message.author.id == server_settings[message.guild.id]["owner_id"]:
+    if message.author.id == server_settings[str(message.guild.id)]["owner_id"]:
         valid = True
-        for role in args:
-            if get(message.guild.roles, name=role) is None:
-                await message.channel.send("{} is not a valid role. :(".format(role))
+        role_ids = []
+        for arg in args:
+            role = get(message.guild.roles, name=arg)
+            if role is None:
+                await message.channel.send("{} is not a valid role. :(".format(arg))
                 valid = False
+            else:
+                role_ids.append(role.id)
 
         if valid:
-            server_settings[message.guild.id]["roles"] = args
+            server_settings[str(message.guild.id)]["role_ids"] = role_ids
 
             save_server_settings()
 

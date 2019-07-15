@@ -100,7 +100,7 @@ async def on_guild_join(guild):
     """
     logger.info("Joined guild {} with name {}.".format(guild.id, guild.name))
 
-    if not guild.id in server_settings:
-        server_settings[guild.id] = server_settings["default"].copy()
+    if not str(guild.id) in server_settings:
+        server_settings[str(guild.id)] = server_settings["default"].copy()
 
         save_server_settings()

@@ -47,9 +47,10 @@ async def process_command_params(message, command_info):
                 exists = not matches is None
             elif param_name == "role":
                 # Check that role is in set
-                new_args.append(arg)
                 roles = message.guild.roles
-                exists = not get(roles, name=arg) is None
+                role = get(roles, name=arg)
+                new_args.append(role)
+                exists = not role is None
             else:
                 # Default pass the old arg
                 new_args.append(arg)
