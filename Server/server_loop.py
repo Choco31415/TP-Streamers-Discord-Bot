@@ -6,6 +6,10 @@ from config import config, client, server_settings, save_server_settings
 
 # Define methods
 async def setup_server_loop():
+    """
+    Start the server loop
+    :return:
+    """
     asyncio.ensure_future(update_servers())
 
 async def update_servers():

@@ -242,6 +242,13 @@ class Lounge():
 
 # Define methods
 async def create_lounge(guild, lounge_name, creator):
+    """
+    Create a lounge
+    :param guild:
+    :param lounge_name:
+    :param creator:
+    :return:
+    """
     # Handle setup
     lounge_category = get(guild.categories, name=config["lounges"]["category_name"])
 

@@ -1,3 +1,8 @@
+"""
+This is a simple config file for logging
+Can be easily imported anywhere.
+"""
+
 # Handle imports
 import os
 import logging

@@ -1,3 +1,8 @@
+"""
+This is a simple config file for loading in settings.
+Can be easily imported anywhere.
+"""
+
 # Handle imports
 import json
 import discord
@@ -19,7 +24,7 @@ with open(token_file, "r") as f:
 with open(server_settings_file, "r") as f:
     server_settings = json.loads(f.read())
 
-def save_server_settings():
+def save_server_settings(): # Not complex enough to use/benefit from SQL tbh
     with open(server_settings_file, "w") as f:
         f.write(json.dumps(server_settings))
 

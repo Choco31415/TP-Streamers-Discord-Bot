@@ -38,12 +38,10 @@ class Command():
     async def get_help(self, message, include_params=False):
         '''
         Gets the help message of a command.
-        :param message: A message
+        :param message: Message that is command
         :param include_params: Whether or not to include command params.
         :return: A help message.
         '''
-        this_aliases = [self.command] + self.aliases
-
         # Gather parameter info
         param_info = ""
         if include_params:
