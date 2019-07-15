@@ -112,7 +112,7 @@ def get_user(arg, guild):
             if "#" in arg:
                 found = found and user.discriminator in arg
         else:
-            found = user.name.lower() == arg.lower()
+            found = user.name.lower() == arg.lower() or user.display_name.lower() == arg.lower()
 
         if found:
             return user

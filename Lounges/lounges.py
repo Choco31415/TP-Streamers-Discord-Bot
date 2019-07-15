@@ -1,7 +1,6 @@
 # Handle imports
 from discord.utils import get
 import asyncio
-from config import config
 from permissions import *
 from config import config
 
@@ -17,7 +16,7 @@ class Lounge():
         self.name = vc.name
         self.vc = vc
         self.tc = tc
-        self.vc_blocks = []
+        self.vc_bypasses = []
         self.admins = [creator]
         self.locked = False
         self.member_count = 0
@@ -37,13 +36,6 @@ class Lounge():
             if self.member_count == 0:
                 await self.schedule_empty_check()
 
-            if self.locked:
-                if not member in self.admins:
-                    await self.vc.set_permissions(member,
-                                              overwrite=lounge_vc_disallow)
-
-                self.vc_blocks.append(member)
-
     async def kick_member(self, member, requestor):
         """
         A user requests a user to be kicked
@@ -53,8 +45,6 @@ class Lounge():
         if self.is_admin(requestor):
             if not self.is_admin(member):
                 await self.tc.send("Removing member {}, please wait.".format(member.name))
-                if self.locked:
-                    self.vc_blocks.append(member) # Auto block them
                 await self.remove_member(member)
 
                 old_vc = self.vc
@@ -68,9 +58,13 @@ class Lounge():
                 await old_vc.delete()
 
                 #Setup permissions on new vc, Discord doesn't always copy them correctly
-                for member in self.vc_blocks:
+                if self.locked and member in self.vc_bypasses:
+                    self.vc_bypasses.remove(member)
+                    await self.vc.set_permissions(member, overwrite=None) # Let's be extraaa careful
+
+                for member in self.vc_bypasses:
                     await self.vc.set_permissions(member,
-                                              overwrite=lounge_vc_disallow)
+                                              overwrite=lounge_vc_allow)
                 for admin in self.admins:
                     await self.vc.set_permissions(admin,
                                                   overwrite=lounge_vc_allow)
@@ -148,10 +142,10 @@ class Lounge():
                 await self.vc.set_permissions(self.guild.default_role,
                                               overwrite=lounge_vc_allow)
 
-                for member in self.vc_blocks:
+                for member in self.vc_bypasses:
                     await self.vc.set_permissions(member,
-                                                  overwrite=lounge_vc_allow)
-                self.vc_blocks = []
+                                                  overwrite=None)
+                self.vc_bypasses = []
 
                 await self.tc.send("The lounge is unlocked.")
         else:
@@ -160,22 +154,28 @@ class Lounge():
                     requestor.name))
 
     async def bypass_member(self, member, requestor):
+        """
+        Bypass a member, allowing them to freely enter/leave a lounge
+        :param member: The member to bypass
+        :param requestor: The person requesting the bypass
+        :return:
+        """
         if self.locked:
             if self.is_admin(requestor):
                 if not self.is_admin(member):
-                    if member in self.vc.members:
+                    if member in self.vc_bypasses:
                         await self.vc.set_permissions(member,
                                                       overwrite=lounge_vc_disallow)
 
-                        self.vc_blocks.append(member)
+                        if member in self.vc_bypasses:
+                            self.vc_bypasses.remove(member)
 
                         await self.tc.send("{} is blocked from entering.".format(member.name))
                     else:
                         await self.vc.set_permissions(member,
                                                       overwrite=lounge_vc_allow)
 
-                        if member in self.vc_blocks:
-                            self.vc_blocks.remove(member)
+                        self.vc_bypasses.append(member)
 
                         await self.tc.send(
                             "{} is allowed to enter.".format(member.name))
