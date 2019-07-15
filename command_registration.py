@@ -56,7 +56,7 @@ class Command():
                 param_info += " <" + param["name"] + attribute_info + ">"
 
         # Gather alias info
-        alias_info = ", ".join(self.aliases)
+        name_info = ", ".join([self.name] + self.aliases)
 
         # Gather context info
         if self.help_message is None:
@@ -67,7 +67,7 @@ class Command():
             context = "(server-owner) " + context
 
         # Handle formatting
-        lstub = "{}{}{}".format(self.name, alias_info, param_info)
+        lstub = "{}{}".format(name_info, param_info)
         if include_params:
             lstub = lstub.ljust(20)
         else:

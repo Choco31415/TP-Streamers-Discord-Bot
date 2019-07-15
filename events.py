@@ -54,7 +54,7 @@ async def on_message(message):
             if safe:
                 await command_info.run(message, args)
         else:
-            await message.channel.send('Command "" not recognized. Run !help for the list of commands.'.format(command))
+            await message.channel.send('Command "{}" not recognized. Run !help for the list of commands.'.format(command))
 
 @client.event
 async def on_member_join(member):

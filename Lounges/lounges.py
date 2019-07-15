@@ -38,7 +38,8 @@ class Lounge():
                 await self.schedule_empty_check()
 
             if self.locked:
-                await self.vc.set_permissions(member,
+                if not member in self.admins:
+                    await self.vc.set_permissions(member,
                                               overwrite=lounge_vc_disallow)
 
                 self.vc_blocks.append(member)
@@ -70,6 +71,9 @@ class Lounge():
                 for member in self.vc_blocks:
                     await self.vc.set_permissions(member,
                                               overwrite=lounge_vc_disallow)
+                for admin in self.admins:
+                    await self.vc.set_permissions(admin,
+                                                  overwrite=lounge_vc_allow)
                 if self.locked:
                     await self.vc.set_permissions(self.guild.default_role,
                                                   overwrite=lounge_vc_disallow)
