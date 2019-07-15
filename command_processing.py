@@ -48,8 +48,8 @@ async def process_command_params(message, command_info):
             elif param_name == "role":
                 # Check that role is in set
                 new_args.append(arg)
-                roles = server_settings[message.guild.id]["roles"]
-                exists = arg in roles
+                roles = message.guild.roles
+                exists = not get(roles, name=arg) is None
             else:
                 # Default pass the old arg
                 new_args.append(arg)
@@ -63,25 +63,27 @@ async def process_command_params(message, command_info):
         #logger.debug("Processing arg {}, param {}, which exists {}.".format(arg, param, exists))
 
         # Check that requirements are met
-        check = param["check"]
         optional = "optional" in param_attributes
 
         if optional and not exists:
             new_args.pop(-1)
             break
 
-        if check == "exists" and not exists:
-            safe = False
-            if not arg is None:
+        if "check" in param:
+            check = param["check"]
+
+            if check == "exists" and not exists:
+                safe = False
+                if not arg is None:
+                    await channel.send(
+                        "{} {} not recognized.".format(param_name.capitalize(), arg))
+                else:
+                    await channel.send(
+                        "Missing parameter {}.".format(param_name.capitalize()))
+            elif check == "not exists" and exists:
+                safe = False
                 await channel.send(
-                    "{} {} not recognized.".format(param_name.capitalize(), arg))
-            else:
-                await channel.send(
-                    "Missing parameter {}.".format(param_name.capitalize()))
-        elif check == "not exists" and exists:
-            safe = False
-            await channel.send(
-                "{} {} already exists.".format(param_name.capitalize(), arg))
+                    "{} {} already exists.".format(param_name.capitalize(), arg))
 
         if not safe:
             break

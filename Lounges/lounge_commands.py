@@ -38,7 +38,7 @@ async def lounge_admin(message, args, lounge):
 register_command(func=lounge_admin,
                  name="admin",
                  category="lounge",
-                 help_message="adds/removes a player or role as a Lounge admin",
+                 help_message="adds/removes a player as a lounge admin",
                  params=[
                      {"name": "username", "check": "exists"},
                      {"name": "lounge", "check": "exists", "attributes": ["optional"]}
@@ -57,7 +57,7 @@ async def lounge_admin_list(message, args, lounge):
 register_command(func=lounge_admin_list,
                  name="admin_list",
                  category="lounge",
-                 help_message="list the admins of a voice lounge",
+                 help_message="list the admins of a lounge",
                  params=[
                      {"name": "lounge", "check": "exists", "attributes": ["optional"]}
                  ])
@@ -109,7 +109,7 @@ async def lounge_delete(message, args, lounge):
 register_command(func=lounge_delete,
                  name="delete",
                  category="lounge",
-                 help_message="deletes a voice lounge",
+                 help_message="deletes a lounge",
                  params=[
                      {"name": "lounge", "check": "exists", "attributes": ["optional"]}
                  ])
@@ -154,7 +154,7 @@ register_command(func=lounge_new,
                  name="lounge",
                  alias_list=["l"],
                  category="lounge",
-                 help_message="allows for players to create their own lounges",
+                 help_message="creates a lounge",
                  params=[
                      {"name": "lounge", "check": "not exists", "attributes": ["extended"]}
                  ])
