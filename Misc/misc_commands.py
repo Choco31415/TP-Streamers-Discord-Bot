@@ -32,7 +32,13 @@ async def role(message, args):
             await message.channel.send("The bot is not powerful enough to handle {}!".format(args[0]))
 async def help_role(message):
     roles = server_settings[message.guild.id]["roles"]
-    return "adds/removes role from a player, supported roles are: {}".format(", ".join(roles))
+    print(roles)
+    if len(roles) == 0:
+        roles_message = "None"
+    else:
+        roles_message = ", ".join(roles)
+
+    return "adds/removes role from a player, supported roles are: {}".format(roles_message)
 
 register_command(func=role,
                  name="role",
@@ -85,7 +91,7 @@ async def help(message, args):
 register_command(func=help,
                  name="help",
                  category="misc",
-                 help_message="get help on a command (credits to Pinkie Pie!)",
+                 help_message="get help on a command",
                  params=[
                      {"name": "command", "check": "exists",  "attributes": ["optional"]}
                  ])

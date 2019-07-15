@@ -14,6 +14,9 @@ from logging import handlers
 logger = None
 log_directory = os.path.join("Resources", "Logs")
 
+if not os.path.exists(log_directory):
+    os.makedirs(log_directory)
+
 def setup_logger():
     global logger
 
