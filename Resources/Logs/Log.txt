@@ -119,3 +119,7 @@
 [15 01:00:57 AM] [INFO] The bot is ready!
 [15 01:00:57 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
 [15 01:00:57 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 01:09:31 AM] [INFO] The bot is ready!
+[15 01:09:31 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 01:09:31 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 01:09:35 AM] [INFO] User ErnieParke#9239 ran !l cat.

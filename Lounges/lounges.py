@@ -21,7 +21,7 @@ class Lounge():
         self.admins = [creator]
         self.locked = False
         self.member_count = 0
-        self.time_to_delete = config["lounge_timeout"] # Seconds
+        self.time_to_delete = config["lounges"]["timeout"] # Seconds
         self.delete_task = None
         self.deleted = False
 
@@ -239,7 +239,7 @@ class Lounge():
 # Define methods
 async def create_lounge(guild, lounge_name, creator):
     # Handle setup
-    lounge_category = get(guild.categories, name=config["lounge_category_name"])
+    lounge_category = get(guild.categories, name=config["lounges"]["category_name"])
 
     overwrites = {guild.me: lounge_vc_allow_bot,}
 
