@@ -1,0 +1,116 @@
+[14 11:53:22 PM] [INFO] The bot is ready!
+[14 11:53:22 PM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[14 11:53:22 PM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[14 11:54:18 PM] [INFO] User ErnieParke#9239 ran !role.
+[14 11:54:22 PM] [INFO] User ErnieParke#9239 ran !role.
+[14 11:54:54 PM] [INFO] The bot is ready!
+[14 11:54:54 PM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[14 11:54:54 PM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[14 11:54:56 PM] [INFO] User ErnieParke#9239 ran !role.
+[14 11:55:33 PM] [INFO] The bot is ready!
+[14 11:55:33 PM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[14 11:55:33 PM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[14 11:55:37 PM] [INFO] User ErnieParke#9239 ran !role.
+[14 11:55:41 PM] [INFO] User ErnieParke#9239 ran !role nltp_streamer.
+[15 12:24:06 AM] [INFO] The bot is ready!
+[15 12:24:06 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:24:06 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:24:10 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:24:37 AM] [INFO] The bot is ready!
+[15 12:24:37 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:24:37 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:24:41 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:25:07 AM] [INFO] The bot is ready!
+[15 12:25:07 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:25:07 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:25:08 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:26:10 AM] [INFO] The bot is ready!
+[15 12:26:10 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:26:10 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:26:11 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:26:55 AM] [INFO] The bot is ready!
+[15 12:26:55 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:26:55 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:27:35 AM] [INFO] The bot is ready!
+[15 12:27:35 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:27:35 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:27:41 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:28:48 AM] [INFO] The bot is ready!
+[15 12:28:48 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:28:48 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:28:54 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:31:15 AM] [INFO] The bot is ready!
+[15 12:31:15 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:31:15 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:31:17 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:32:08 AM] [INFO] The bot is ready!
+[15 12:32:08 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:32:08 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:32:09 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:32:14 AM] [INFO] User ErnieParke#9239 ran !help kick.
+[15 12:41:14 AM] [INFO] The bot is ready!
+[15 12:41:14 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:41:14 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:41:17 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:41:21 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:41:40 AM] [INFO] User ErnieParke#9239 ran !help.
+[15 12:41:42 AM] [INFO] User ErnieParke#9239 ran !l.
+[15 12:42:27 AM] [INFO] The bot is ready!
+[15 12:42:28 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:42:28 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:42:29 AM] [INFO] User ErnieParke#9239 ran !l.
+[15 12:43:09 AM] [INFO] The bot is ready!
+[15 12:43:09 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:43:09 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:43:10 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:44:25 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:44:25 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:44:26 AM] [INFO] The bot is ready!
+[15 12:44:26 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:44:26 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:44:29 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:45:09 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:45:09 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:45:09 AM] [INFO] The bot is ready!
+[15 12:45:09 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:45:09 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:45:10 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:45:55 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:45:55 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:45:55 AM] [INFO] The bot is ready!
+[15 12:45:55 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:45:55 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:45:57 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:46:02 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:46:08 AM] [INFO] User ErnieParke#9239 ran !admin_list.
+[15 12:46:46 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:46:46 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:46:46 AM] [INFO] The bot is ready!
+[15 12:46:46 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:46:46 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:46:48 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:46:52 AM] [INFO] User ErnieParke#9239 ran !admin_list.
+[15 12:47:05 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:47:05 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:47:06 AM] [INFO] The bot is ready!
+[15 12:47:06 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:47:06 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:47:07 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:47:11 AM] [INFO] User ErnieParke#9239 ran !admin_list.
+[15 12:49:05 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:49:05 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:49:05 AM] [INFO] The bot is ready!
+[15 12:49:05 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:49:05 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:49:07 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:49:12 AM] [INFO] User ErnieParke#9239 ran !lock cat.
+[15 12:50:12 AM] [INFO] User ErnieParke#9239 ran !lock.
+[15 12:50:14 AM] [INFO] User ErnieParke#9239 ran !lock.
+[15 12:51:02 AM] [INFO] User ErnieParke#9239 ran !lock cat.
+[15 12:51:53 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 12:51:53 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 12:51:54 AM] [INFO] The bot is ready!
+[15 12:51:54 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 12:51:54 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
+[15 12:51:55 AM] [INFO] User ErnieParke#9239 ran !l cat.
+[15 12:51:58 AM] [INFO] User ErnieParke#9239 ran !lock cat.
