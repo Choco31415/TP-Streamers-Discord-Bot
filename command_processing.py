@@ -38,7 +38,7 @@ async def process_command_params(message, command_info):
                 exists = not new_args[-1] is None
             elif param_name == "lounge":
                 # Check that lounge exists on server
-                if "extended"  in  param_attributes:
+                if "extended" in param_attributes:
                     lounge_name = "_".join([arg] + args)
                 else:
                     lounge_name = arg
@@ -68,9 +68,11 @@ async def process_command_params(message, command_info):
 
         if optional and not exists:
             new_args.pop(-1)
-            break
-
-        if "check" in param:
+            if arg is None:
+                break
+            else:
+                new_args.append(arg)
+        elif "check" in param:
             check = param["check"]
 
             if check == "exists" and not exists:
