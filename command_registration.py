@@ -1,9 +1,10 @@
 # Handle imports
+from config import config
 
 # Define variables
 command_lookup = {}
 aliases = {}
-command_start = "!"
+command_start = config["command_start"]
 
 # Define methods
 def register_command(func, name, category, params, help_message=None,

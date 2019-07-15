@@ -1,9 +1,8 @@
 # Handle imports
 from Lounges.lounges import lounges
-from config import config, server_settings
+from config import server_settings
 from command_registration import aliases
 from discord.utils import get
-from loggers import logger
 
 # Define variables
 

@@ -1,4 +1,5 @@
 {
+  "command_start": "!",
   "stream": {
     "discord_channel": "tagpro-streams",
     "twitch_api_url": "https://api.twitch.tv/kraken/streams",
@@ -7,6 +8,7 @@
     "panel_color": "0xF08000"
   },
   "server_poll_frequency": 14400,
+  "lounge_timeout": 30,
   "lounge_category_name": "General Lounges",
   "lounge_channel_name": "lounge-general"
 }

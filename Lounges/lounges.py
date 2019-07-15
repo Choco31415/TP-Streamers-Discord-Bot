@@ -3,6 +3,7 @@ from discord.utils import get
 import asyncio
 from config import config
 from permissions import *
+from config import config
 
 # Define variables
 lounges = []
@@ -20,7 +21,7 @@ class Lounge():
         self.admins = [creator]
         self.locked = False
         self.member_count = 0
-        self.time_to_delete = 3 # Seconds
+        self.time_to_delete = config["lounge_timeout"] # Seconds
         self.delete_task = None
         self.deleted = False
 

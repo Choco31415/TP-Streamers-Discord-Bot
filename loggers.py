@@ -3,7 +3,6 @@ import os
 import logging
 from logging import handlers
 
-
 # Define variables
 
 # Define other stuff

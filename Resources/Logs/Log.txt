@@ -114,3 +114,8 @@
 [15 12:51:54 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
 [15 12:51:55 AM] [INFO] User ErnieParke#9239 ran !l cat.
 [15 12:51:58 AM] [INFO] User ErnieParke#9239 ran !lock cat.
+[15 01:00:56 AM] [INFO] Deleted tc cat for guild Bot Testing Server.
+[15 01:00:56 AM] [INFO] Deleted vc cat for guild Bot Testing Server.
+[15 01:00:57 AM] [INFO] The bot is ready!
+[15 01:00:57 AM] [INFO] I am currently in guild 588396100373970963 with name Bot Testing Server.
+[15 01:00:57 AM] [INFO] I am currently in guild 591739082141335565 with name Bot Testing Server 2.
