@@ -17,9 +17,12 @@ async def on_ready():
     Notify that bot is ready.
     :return:
     '''
-    await reset_lounge_category()
+    for guild in client.guilds:
+        await reset_lounge_category(guild)
 
-    await setup_stream_channel()
+        await setup_stream_channel(guild)
+
+    await setup_stream_loop()
 
     await setup_server_loop()
 
@@ -105,3 +108,7 @@ async def on_guild_join(guild):
         server_settings[str(guild.id)] = server_settings["default"].copy()
 
         save_server_settings()
+
+    await reset_lounge_category(guild)
+
+    await setup_stream_channel(guild)
