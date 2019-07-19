@@ -2,7 +2,7 @@
 from Lounges.lounges import lounges
 from config import server_settings
 from command_registration import aliases
-from discord.utils import get
+from discord.utils import find
 
 # Define variables
 
@@ -42,13 +42,13 @@ async def process_command_params(message, command_info):
                     lounge_name = "_".join([arg] + args)
                 else:
                     lounge_name = arg
-                matches = get(lounges, name=lounge_name.lower())
+                matches = find(lambda l: l.name.lower() == lounge_name.lower(), lounges)
                 new_args.append(lounge_name)
                 exists = not matches is None
             elif param_name == "role":
                 # Check that role is in set
                 roles = message.guild.roles
-                role = get(roles, name=arg)
+                role = find(lambda r: r.name.lower() == arg.lower(), roles)
                 new_args.append(role)
                 exists = not role is None
             else:

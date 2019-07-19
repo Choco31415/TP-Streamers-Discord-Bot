@@ -14,7 +14,6 @@ class Lounge():
         self.creator = creator
         self.guild = vc.guild
         self.name = vc.name
-        self.repr_name = self.name.lower()
         self.vc = vc
         self.tc = tc
         self.vc_bypasses = []

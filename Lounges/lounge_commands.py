@@ -1,5 +1,5 @@
 # Handle imports
-from discord.utils import get
+from discord.utils import find, get
 from Lounges.lounges import create_lounge, lounges
 from command_registration import *
 
@@ -19,7 +19,7 @@ def lounge_command(arg_position):
                 if lounge is None:
                     await message.channel.send("This isn't a lounge. Run !help for options. :o")
             else:
-                lounge = get(lounges, repr_name=args[arg_position].lower())
+                lounge = find(lambda l: l.name.lower() == args[arg_position].lower(), lounges)
                 if lounge is None:
                     await message.channel.send(
                         "Lounge {} not found.".format(args[arg_position]))
