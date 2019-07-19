@@ -3,6 +3,8 @@ import asyncio
 import json
 import requests
 from config import config, tokens
+import datetime
+import pytz
 
 # Define variables
 stream_panels = []
@@ -29,7 +31,7 @@ async def update_streams():
 
     if len(streams) == 0:
         stream_header = "**No TagPro streams found :c**\n"
-        stream_message = "Try making your own stream!"
+        stream_message = "Try making your own stream!\n"
     else:
         stream_header = "**Found {} streams.**".format(len(streams))
         stream_message = ""
@@ -38,6 +40,11 @@ async def update_streams():
             host = stream['channel']['display_name']
             url = stream['channel']['url']
             stream_message += "{} is streaming \"{}\" at: {}\n".format(host, stream_name, url)
+
+    d = datetime.datetime.now()
+    timezone = pytz.timezone(config["time_zone"])
+    d_localized = timezone.localize(d)
+    stream_message +=  "*Updated: {}*".format(d_localized.strftime("%I:%M %p %Z").lower())
 
     for m in stream_panels:
         embed = m.embeds[0]

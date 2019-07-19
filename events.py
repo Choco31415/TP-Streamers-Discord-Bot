@@ -5,9 +5,10 @@ from Server.server_loop import *
 from Stream.stream_setup import *
 from command_processing import *
 from loggers import logger
+from config import config
+import discord
 
 # Define variables
-status = "Cloudsdale"
 
 # Define methods
 @client.event
@@ -24,7 +25,7 @@ async def on_ready():
 
     logger.info("The bot is ready!")
     print("The bot is ready!")
-    await client.change_presence(activity=discord.Game(name=status))
+    await client.change_presence(activity=discord.Game(name="Github: {}".format(config["github_repo_name"])))
 
     for guild in client.guilds:
         logger.info("I am currently in guild {} with name {}.".format(guild.id, guild.name))
