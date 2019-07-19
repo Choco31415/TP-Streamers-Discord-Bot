@@ -45,7 +45,7 @@ async def on_message(message):
     if message.content.startswith(command_start):
         logger.info("User {} ran {}.".format(message.author, message.content))
 
-        command = message.content.split(" ")[0].replace(command_start, "", 1)
+        command = message.content.split(" ")[0].replace(command_start, "", 1).lower()
 
         command = resolve_command(command)
 

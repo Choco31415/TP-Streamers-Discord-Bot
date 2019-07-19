@@ -42,7 +42,7 @@ async def process_command_params(message, command_info):
                     lounge_name = "_".join([arg] + args)
                 else:
                     lounge_name = arg
-                matches = get(lounges, guild=message.guild, name=lounge_name)
+                matches = get(lounges, name=lounge_name.lower())
                 new_args.append(lounge_name)
                 exists = not matches is None
             elif param_name == "role":

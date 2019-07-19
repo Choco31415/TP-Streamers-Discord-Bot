@@ -19,9 +19,10 @@ def lounge_command(arg_position):
                 if lounge is None:
                     await message.channel.send("This isn't a lounge. Run !help for options. :o")
             else:
-                lounge = get(lounges, name=args[arg_position])
+                lounge = get(lounges, repr_name=args[arg_position].lower())
                 if lounge is None:
-                    await message.channel.send("Lounge {} not found.".format(args[arg_position]))
+                    await message.channel.send(
+                        "Lounge {} not found.".format(args[arg_position]))
 
             if not lounge is None:
                 await func(message, args, lounge)

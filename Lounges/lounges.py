@@ -14,6 +14,7 @@ class Lounge():
         self.creator = creator
         self.guild = vc.guild
         self.name = vc.name
+        self.repr_name = self.name.lower()
         self.vc = vc
         self.tc = tc
         self.vc_bypasses = []
@@ -44,37 +45,40 @@ class Lounge():
         """
         if self.is_admin(requestor):
             if not self.is_admin(member):
-                await self.tc.send("Removing member {}, please wait.".format(member.name))
-                await self.remove_member(member)
+                if member in self.vc.members:
+                    await self.tc.send("Removing member {}, please wait.".format(member.name))
+                    await self.remove_member(member)
 
-                old_vc = self.vc
-                self.vc = await self.vc.clone()
+                    old_vc = self.vc
+                    self.vc = await self.vc.clone()
 
-                # Transfer members over
-                for m in old_vc.members:
-                    if m != member:
-                        await m.move_to(self.vc)
+                    # Transfer members over
+                    for m in old_vc.members:
+                        if m != member:
+                            await m.move_to(self.vc)
 
-                await old_vc.delete()
+                    await old_vc.delete()
 
-                #Setup permissions on new vc, Discord doesn't always copy them correctly
-                if self.locked and member in self.vc_bypasses:
-                    self.vc_bypasses.remove(member)
-                    await self.vc.set_permissions(member, overwrite=None) # Let's be extraaa careful
+                    #Setup permissions on new vc, Discord doesn't always copy them correctly
+                    if self.locked and member in self.vc_bypasses:
+                        self.vc_bypasses.remove(member)
+                        await self.vc.set_permissions(member, overwrite=None) # Let's be extraaa careful
 
-                for member in self.vc_bypasses:
-                    await self.vc.set_permissions(member,
-                                              overwrite=lounge_vc_allow)
-                for admin in self.admins:
-                    await self.vc.set_permissions(admin,
+                    for member in self.vc_bypasses:
+                        await self.vc.set_permissions(member,
                                                   overwrite=lounge_vc_allow)
-                if self.locked:
-                    await self.vc.set_permissions(self.guild.default_role,
-                                                  overwrite=lounge_vc_disallow)
+                    for admin in self.admins:
+                        await self.vc.set_permissions(admin,
+                                                      overwrite=lounge_vc_allow)
+                    if self.locked:
+                        await self.vc.set_permissions(self.guild.default_role,
+                                                      overwrite=lounge_vc_disallow)
 
-                self.member_count = len(self.vc.members)
+                    self.member_count = len(self.vc.members)
 
-                await self.tc.send("Removed member {}.".format(member.name))
+                    await self.tc.send("Removed member {}.".format(member.name))
+                else:
+                    await self.tc.send("Cannot kick player {} as they're not connected.".format(member.name))
             else:
                 await self.tc.send("Cannot kick an admin!")
         else:
@@ -98,7 +102,7 @@ class Lounge():
                 if self.is_admin(member):
                     self.admins.remove(member)
 
-                    await self.tc.send("{} is no loner an admin.".format(member.name))
+                    await self.tc.send("{} is no longer an admin.".format(member.name))
                 else:
                     self.admins.append(member)
 

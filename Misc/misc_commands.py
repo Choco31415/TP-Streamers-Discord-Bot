@@ -44,13 +44,12 @@ async def help_role(message):
         role_message = ", ".join(role_names)
 
     return "adds/removes role from a player, supported roles are: {}".format(role_message)
-
 register_command(func=role,
                  name="role",
                  category="misc",
                  help_func=help_role,
                  params=[
-                     {"name": "role"}
+                     {"name": "role", "check": "exists"}
                  ])
 
 # Define commands
