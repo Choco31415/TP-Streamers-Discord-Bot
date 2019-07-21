@@ -7,15 +7,30 @@ Can be easily imported anywhere.
 import os
 import logging
 from logging import handlers
+import  sys
 
 # Define variables
 
-# Define other stuff
+# Ensure logger directory exists
 logger = None
 log_directory = os.path.join("Resources", "Logs")
 
 if not os.path.exists(log_directory):
     os.makedirs(log_directory)
+
+# Define logger setup
+class SysLogRedirect:
+    def __init__(self, level):
+        self.level = level
+
+    def write(self, message):
+        if message.strip() != '':
+            self.level(message)
+
+    def flush(self):
+        # create a flush method so things can be flushed when
+        # the system wants to.
+        self.level(sys.stderr)
 
 def setup_logger():
     global logger
@@ -35,4 +50,8 @@ def setup_logger():
 
     logger.propagate = False # Avoid console output
 
+    # Redirect standard streams
+    sys.stderr = SysLogRedirect(logger.warning)
+
+# Setup logger
 setup_logger()
