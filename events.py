@@ -28,7 +28,7 @@ async def on_ready():
         for guild in client.guilds:
             await set_bot_icon(guild)
     except Exception:
-        logger.log("Couldn't set bot profile picture.")
+        logger.warning("Couldn't set bot profile picture.")
 
     await setup_stream_loop()
 
