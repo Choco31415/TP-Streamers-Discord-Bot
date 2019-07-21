@@ -1,5 +1,5 @@
 # Handle imports
-from config import config
+from config import config, server_settings
 
 # Define variables
 command_lookup = {}
@@ -73,8 +73,11 @@ class Command():
 
         return command_start + lstub + " :: " + context
 
-    def run(self, message, args):
-        return self.command(message, args)
+    async def run(self, message, args):
+        if not self.owner_only or message.author.id == server_settings[str(message.guild.id)]["owner_id"]:
+            return await self.command(message, args)
+        else:
+            await message.channel.send("This command can only be run by the server owner!")
 
     def get_category(self):
         return self.category

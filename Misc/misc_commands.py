@@ -49,7 +49,7 @@ register_command(func=role,
                  category="misc",
                  help_func=help_role,
                  params=[
-                     {"name": "role", "check": "exists"}
+                     {"name": "role", "check": "exists", "attributes": ["extended"]}
                  ])
 
 # Define commands

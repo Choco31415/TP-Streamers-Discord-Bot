@@ -11,6 +11,7 @@ import discord
 config_file = "Resources/config.json"
 token_file = "Resources/token.json"
 server_settings_file = "Resources/server_settings.json"
+default_server_settings_file = "Resources/default_server_settings.json"
 
 ## config.json
 with open(config_file, "r") as f:
@@ -23,6 +24,10 @@ with open(token_file, "r") as f:
 ## server_settings.json
 with open(server_settings_file, "r") as f:
     server_settings = json.loads(f.read())
+
+## default_server_settings
+with open(default_server_settings_file, "r") as f:
+    default_server_settings = json.loads(f.read())
 
 def save_server_settings(): # Not complex enough to use/benefit from SQL tbh
     with open(server_settings_file, "w") as f:

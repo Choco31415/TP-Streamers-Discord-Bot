@@ -1,6 +1,7 @@
 # Handle imports
 import asyncio
-from config import config, client, server_settings, save_server_settings
+from config import config, client, server_settings, default_server_settings, save_server_settings
+import copy
 
 # Define variables
 
@@ -19,7 +20,7 @@ async def update_servers():
     """
     for guild in client.guilds:
         if not str(guild.id) in server_settings:
-            server_settings[str(guild.id)] = server_settings["default"].copy()
+            server_settings[str(guild.id)] = copy.deepcopy(default_server_settings)
 
         if not guild.owner is None:
             server_settings[str(guild.id)]["owner_id"] = guild.owner.id

@@ -1,6 +1,5 @@
 # Handle imports
 from Lounges.lounges import lounges
-from config import server_settings
 from command_registration import aliases
 from discord.utils import find
 
@@ -32,16 +31,16 @@ async def process_command_params(message, command_info):
         if len(args) > 0:
             arg = args.pop(0)
 
+            if "extended" in param_attributes:
+                arg = " ".join([arg] + args)
+
             if param_name == "username":
                 # Check that user exists on server
                 new_args.append(get_user(arg, message.guild))
                 exists = not new_args[-1] is None
             elif param_name == "lounge":
                 # Check that lounge exists on server
-                if "extended" in param_attributes:
-                    lounge_name = "_".join([arg] + args)
-                else:
-                    lounge_name = arg
+                lounge_name = arg.replace(" ", "_")
                 matches = find(lambda l: l.name.lower() == lounge_name.lower(), lounges)
                 new_args.append(lounge_name)
                 exists = not matches is None
