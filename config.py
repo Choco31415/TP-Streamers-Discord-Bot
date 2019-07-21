@@ -6,6 +6,7 @@ Can be easily imported anywhere.
 # Handle imports
 import json
 import discord
+import os
 
 # Define variables
 config_file = "Resources/config.json"
@@ -22,6 +23,10 @@ with open(token_file, "r") as f:
     tokens = json.loads(f.read())
 
 ## server_settings.json
+if not os.path.exists(server_settings_file):
+    with open(default_server_settings_file, "w+") as f:
+        f.write("{}") # Default
+
 with open(server_settings_file, "r") as f:
     server_settings = json.loads(f.read())
 
