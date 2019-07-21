@@ -1,7 +1,23 @@
 # TP-Streamers-Discord-Bot
 This bot helps manage the TagPro streamers Discord server, providing several useful commands.
 
-Currently built on Python 3.6.1. 3.7+ is not supported.
+Currently built on Python 3.6.1. 3.7+ is not supported. To change python versions,
+update `monitor.sh`.
+
+## Running
+
+### Setup
+
+Add a `token.json` file to Resources. It must contain values `discord_token` and
+`twitch_client_id` for full functionality.
+
+### Starting
+
+Run the following command:
+
+`bash monitor.sh`
+
+`monitor.sh` provides automatic crash restarting.
 
 ## Commands
 
