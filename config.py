@@ -26,6 +26,7 @@ with open(server_settings_file, "r") as f:
 
 def save_server_settings(): # Not complex enough to use/benefit from SQL tbh
     with open(server_settings_file, "w") as f:
-        f.write(json.dumps(server_settings))
+        toWrite = json.dumps(server_settings, indent=4, separators=(',', ': '))
+        f.write(toWrite)
 
 client = discord.Client()

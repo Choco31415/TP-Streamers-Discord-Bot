@@ -18,11 +18,11 @@ async def update_servers():
     :return:
     """
     for guild in client.guilds:
-        if not guild.id in server_settings:
-            server_settings[guild.id] = server_settings["default"]
+        if not str(guild.id) in server_settings:
+            server_settings[str(guild.id)] = server_settings["default"].copy()
 
         if not guild.owner is None:
-            server_settings[guild.id]["owner_id"] = guild.owner.id
+            server_settings[str(guild.id)]["owner_id"] = guild.owner.id
 
     save_server_settings()
 

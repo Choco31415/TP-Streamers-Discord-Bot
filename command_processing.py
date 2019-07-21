@@ -2,7 +2,7 @@
 from Lounges.lounges import lounges
 from config import server_settings
 from command_registration import aliases
-from discord.utils import get
+from discord.utils import find
 
 # Define variables
 
@@ -38,18 +38,19 @@ async def process_command_params(message, command_info):
                 exists = not new_args[-1] is None
             elif param_name == "lounge":
                 # Check that lounge exists on server
-                if "extended"  in  param_attributes:
+                if "extended" in param_attributes:
                     lounge_name = "_".join([arg] + args)
                 else:
                     lounge_name = arg
-                matches = get(lounges, guild=message.guild, name=lounge_name)
+                matches = find(lambda l: l.name.lower() == lounge_name.lower(), lounges)
                 new_args.append(lounge_name)
                 exists = not matches is None
             elif param_name == "role":
                 # Check that role is in set
-                new_args.append(arg)
-                roles = server_settings[message.guild.id]["roles"]
-                exists = arg in roles
+                roles = message.guild.roles
+                role = find(lambda r: r.name.lower() == arg.lower(), roles)
+                new_args.append(role)
+                exists = not role is None
             else:
                 # Default pass the old arg
                 new_args.append(arg)
@@ -63,25 +64,29 @@ async def process_command_params(message, command_info):
         #logger.debug("Processing arg {}, param {}, which exists {}.".format(arg, param, exists))
 
         # Check that requirements are met
-        check = param["check"]
         optional = "optional" in param_attributes
 
         if optional and not exists:
             new_args.pop(-1)
-            break
-
-        if check == "exists" and not exists:
-            safe = False
-            if not arg is None:
-                await channel.send(
-                    "{} {} not recognized.".format(param_name.capitalize(), arg))
+            if arg is None:
+                break
             else:
+                new_args.append(arg)
+        elif "check" in param:
+            check = param["check"]
+
+            if check == "exists" and not exists:
+                safe = False
+                if not arg is None:
+                    await channel.send(
+                        "{} {} not recognized.".format(param_name.capitalize(), arg))
+                else:
+                    await channel.send(
+                        "Missing parameter {}.".format(param_name.capitalize()))
+            elif check == "not exists" and exists:
+                safe = False
                 await channel.send(
-                    "Missing parameter {}.".format(param_name.capitalize()))
-        elif check == "not exists" and exists:
-            safe = False
-            await channel.send(
-                "{} {} already exists.".format(param_name.capitalize(), arg))
+                    "{} {} already exists.".format(param_name.capitalize(), arg))
 
         if not safe:
             break
@@ -109,7 +114,7 @@ def get_user(arg, guild):
             if "#" in arg:
                 found = found and user.discriminator in arg
         else:
-            found = user.name.lower() == arg.lower()
+            found = user.name.lower() == arg.lower() or user.display_name.lower() == arg.lower()
 
         if found:
             return user

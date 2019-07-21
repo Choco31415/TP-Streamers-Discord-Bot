@@ -5,8 +5,8 @@ Resources/Logs
 # PyCharm, stop putting your stuff in the repo
 .idea
 
-# Created by https://www.gitignore.io/api/linux,macos,windows,pycharm
-# Edit at https://www.gitignore.io/?templates=linux,macos,windows,pycharm
+# Created by https://www.gitignore.io/api/linux,macos,windows
+# Edit at https://www.gitignore.io/?templates=linux,macos,windows
 
 ### Linux ###
 *~

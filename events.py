@@ -5,9 +5,11 @@ from Server.server_loop import *
 from Stream.stream_setup import *
 from command_processing import *
 from loggers import logger
+from config import config
+from bot_setup import *
+import discord
 
 # Define variables
-status = "Cloudsdale"
 
 # Define methods
 @client.event
@@ -16,15 +18,26 @@ async def on_ready():
     Notify that bot is ready.
     :return:
     '''
-    await reset_lounge_category()
+    for guild in client.guilds:
+        await reset_lounge_category(guild)
 
-    await setup_stream_channel()
+        await setup_stream_channel(guild)
+
+    # Separate loop. If one fails, all will
+    try:
+        for guild in client.guilds:
+            await set_bot_icon(guild)
+    except Exception:
+        logger.log("Couldn't set bot profile picture.")
+
+    await setup_stream_loop()
 
     await setup_server_loop()
 
+    # Set bot to look ready
     logger.info("The bot is ready!")
     print("The bot is ready!")
-    await client.change_presence(activity=discord.Game(name=status))
+    await client.change_presence(activity=discord.Game(name="Github: {}".format(config["github_repo_name"])))
 
     for guild in client.guilds:
         logger.info("I am currently in guild {} with name {}.".format(guild.id, guild.name))
@@ -44,7 +57,7 @@ async def on_message(message):
     if message.content.startswith(command_start):
         logger.info("User {} ran {}.".format(message.author, message.content))
 
-        command = message.content.split(" ")[0].replace(command_start, "", 1)
+        command = message.content.split(" ")[0].replace(command_start, "", 1).lower()
 
         command = resolve_command(command)
 
@@ -100,7 +113,11 @@ async def on_guild_join(guild):
     """
     logger.info("Joined guild {} with name {}.".format(guild.id, guild.name))
 
-    if not guild.id in server_settings:
-        server_settings[guild.id] = server_settings["default"]
+    if not str(guild.id) in server_settings:
+        server_settings[str(guild.id)] = server_settings["default"].copy()
 
         save_server_settings()
+
+    await reset_lounge_category(guild)
+
+    await setup_stream_channel(guild)
