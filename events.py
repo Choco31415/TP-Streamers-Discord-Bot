@@ -24,16 +24,15 @@ async def on_ready():
 
         await setup_stream_channel(guild)
 
+    await setup_stream_loop()
+
+    await setup_server_loop()
     # Separate loop. If one fails, all will
     try:
         for guild in client.guilds:
             await set_bot_icon(guild)
     except Exception:
         logger.info("Couldn't set bot profile picture.")
-
-    await setup_stream_loop()
-
-    await setup_server_loop()
 
     # Set bot to look ready
     logger.info("The bot is ready!")

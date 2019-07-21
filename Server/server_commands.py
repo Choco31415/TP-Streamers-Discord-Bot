@@ -29,7 +29,7 @@ async def toggle_role(message, args):
 register_command(func=toggle_role,
                  name="toggle_role",
                  category="admin",
-                 help_message="set the roles for the server",
+                 help_message="enable/disable a role for users to assign",
                  params=[
                      {"name": "role", "check": "exists", "attributes": ["extended"]}
                  ],
