@@ -17,7 +17,7 @@ def lounge_command(arg_position):
             if len(args) == arg_position:
                 lounge = get(lounges, tc=message.channel)
                 if lounge is None:
-                    await message.channel.send("This isn't a lounge. Run !help for options. :o")
+                    await message.channel.send("This isn't a lounge. Run this command in a lounge or specify the lounge. Run !help <command> for options. :o")
             else:
                 lounge = find(lambda l: l.name.lower() == args[arg_position].lower(), lounges)
                 if lounge is None:

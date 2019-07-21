@@ -27,7 +27,6 @@ async def on_ready():
     await setup_stream_loop()
 
     await setup_server_loop()
-
     # Separate loop. If one fails, all will
     try:
         for guild in client.guilds:
