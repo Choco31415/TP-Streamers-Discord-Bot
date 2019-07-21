@@ -79,7 +79,7 @@ class Lounge():
                 else:
                     await self.tc.send("Cannot kick player {} as they're not connected.".format(member.name))
             else:
-                await self.tc.send("Cannot kick an admin!")
+                await self.tc.send("Cannot kick an admin.")
         else:
             await self.tc.send(
                 "{} is not an admin and cannot run admin commands.".format(
@@ -110,7 +110,7 @@ class Lounge():
                                                       overwrite=lounge_vc_allow)
 
                     await self.tc.send(
-                        "{} is now an admin!".format(member.name))
+                        "{} is now an admin.".format(member.name))
             else:
                 await self.tc.send("Lounge creators are always admins.")
         else:

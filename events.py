@@ -5,9 +5,10 @@ from Server.server_loop import *
 from Stream.stream_setup import *
 from command_processing import *
 from loggers import logger
-from config import config
+from config import server_settings, default_server_settings
 from bot_setup import *
 import discord
+import copy
 
 # Define variables
 
@@ -28,7 +29,7 @@ async def on_ready():
         for guild in client.guilds:
             await set_bot_icon(guild)
     except Exception:
-        logger.warning("Couldn't set bot profile picture.")
+        logger.info("Couldn't set bot profile picture.")
 
     await setup_stream_loop()
 
@@ -114,7 +115,8 @@ async def on_guild_join(guild):
     logger.info("Joined guild {} with name {}.".format(guild.id, guild.name))
 
     if not str(guild.id) in server_settings:
-        server_settings[str(guild.id)] = server_settings["default"].copy()
+        server_settings[str(guild.id)] = copy.deepcopy(default_server_settings)
+        server_settings[str(guild.id)]["owner_id"] = guild.owner.id
 
         save_server_settings()
 

@@ -1,6 +1,7 @@
 # No password fo u!
 Resources/token.json
 Resources/Logs
+Resources/server_settings.json
 
 # PyCharm, stop putting your stuff in the repo
 .idea
