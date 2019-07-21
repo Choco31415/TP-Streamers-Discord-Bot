@@ -6,6 +6,7 @@ from Stream.stream_setup import *
 from command_processing import *
 from loggers import logger
 from config import config
+from bot_setup import *
 import discord
 
 # Define variables
@@ -22,10 +23,18 @@ async def on_ready():
 
         await setup_stream_channel(guild)
 
+    # Separate loop. If one fails, all will
+    try:
+        for guild in client.guilds:
+            await set_bot_icon(guild)
+    except Exception:
+        logger.log("Couldn't set bot profile picture.")
+
     await setup_stream_loop()
 
     await setup_server_loop()
 
+    # Set bot to look ready
     logger.info("The bot is ready!")
     print("The bot is ready!")
     await client.change_presence(activity=discord.Game(name="Github: {}".format(config["github_repo_name"])))

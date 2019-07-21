@@ -13,6 +13,7 @@
     "category_name": "General Lounges",
     "channel_name": "lounge-general"
   },
-  "github_repo_name": "TP-Streamers-Discord-Bot",
-  "time_zone": "America/New_York"
+  "github_repo_name": "TP_Discord_Bot",
+  "time_zone": "America/New_York",
+  "bot_icon_file": "Resources/icon.png"
 }
