@@ -40,7 +40,7 @@ def setup_logger():
     formatter = logging.Formatter(format, datefmt='%m/%d %I:%M:%S %p')
 
     # Set handlers
-    handler = logging.handlers.RotatingFileHandler(os.path.join(log_directory, "Log.txt"), 'a', 20000, 4)
+    handler = logging.handlers.RotatingFileHandler(os.path.join(log_directory, "Log.txt"), 'a', 50000, 4)
     handler.setFormatter(formatter)
 
     # Update logger
