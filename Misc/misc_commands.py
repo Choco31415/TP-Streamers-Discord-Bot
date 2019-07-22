@@ -4,6 +4,7 @@ from discord.utils import get
 from command_processing import resolve_command
 from command_registration import *
 from config import server_settings
+from misc_helper import get_dm_channel
 
 # Define variables
 help_highlighter = "asciidoc"
@@ -79,14 +80,20 @@ async def help(message, args):
             reply += help_message + "\n"
 
         reply += "\n```"
+        await channel.send(
+            "Check your DMs for all of the commands you can use on this server!\n" \
+            "If you want help for a specific command, do:\n" \
+            "```!help command```")
+        dm_channel = await get_dm_channel(message.author)
+        await dm_channel.send(reply)
 
-        await channel.send(reply)
     else:
         # Send help message
         help_for = resolve_command(args[0])
 
         if help_for not in command_lookup:
-            await channel.send("'{}' is not recognized. Run !help for a general list of commands.".format(help_for))
+            reply = "'{}' is not recognized. Run !help for a general list of commands.".format(help_for)
+            await channel.send(reply)
         else:
             command_info = command_lookup[help_for]
             help_message = await command_info.get_help(message, include_params=True)

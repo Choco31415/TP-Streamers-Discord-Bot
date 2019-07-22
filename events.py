@@ -9,6 +9,7 @@ from config import server_settings, default_server_settings
 from bot_setup import *
 import discord
 import copy
+from misc_helper import get_dm_channel
 
 # Define variables
 
@@ -20,9 +21,13 @@ async def on_ready():
     :return:
     '''
     for guild in client.guilds:
-        await reset_lounge_category(guild)
+        try:
+            await reset_lounge_category(guild)
 
-        await setup_stream_channel(guild)
+            await setup_stream_channel(guild)
+
+        except Exception:
+            logger.info("Couldn't setup server {}.".format(guild.name))
 
     await setup_stream_loop()
 
@@ -67,7 +72,7 @@ async def on_message(message):
             if safe:
                 await command_info.run(message, args)
         else:
-            await message.channel.send('Command "{}" not recognized. Run !help for the list of commands.'.format(command))
+            logger.info("Command not recognized.")
 
 @client.event
 async def on_member_join(member):
