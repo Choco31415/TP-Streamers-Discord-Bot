@@ -15,9 +15,9 @@ Add a `token.json` file to Resources. It must contain values `discord_token` and
 
 Run the following command:
 
-`bash monitor.sh`
+`nohup monitor.sh &`
 
-`monitor.sh` provides automatic crash restarting.
+This creates a crash-resilient, terminal independent start.
 
 ## Commands
 
