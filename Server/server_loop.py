@@ -28,4 +28,4 @@ async def update_servers():
     save_server_settings()
 
     await asyncio.sleep(config["server_poll_frequency"])
-    await update_servers()
+    asyncio.ensure_future(update_servers())

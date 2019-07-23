@@ -56,6 +56,3 @@ async def setup_stream_channel(guild):
     m.embeds[0].color = int(config["stream"]["panel_color"], 16)
 
     add_stream_panel(m)
-
-async def setup_stream_loop():
-    asyncio.ensure_future(update_streams())

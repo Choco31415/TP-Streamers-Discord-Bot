@@ -52,4 +52,7 @@ async def update_streams():
         await m.edit(embed=embed)
 
     await asyncio.sleep(config["stream"]["update_frequency"])
-    await update_streams()
+    asyncio.ensure_future(update_streams())
+
+async def setup_stream_loop():
+    asyncio.ensure_future(update_streams())
