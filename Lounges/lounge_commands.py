@@ -148,7 +148,7 @@ async def lounge_new(message, args):
         lounge_name = args[0]
         creator = message.author
 
-        await create_lounge(guild, lounge_name, creator)
+        await create_lounge(message, guild, lounge_name, creator)
 
         await message.channel.send("Created lounge {}.".format(lounge_name))
     else:

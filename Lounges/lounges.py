@@ -244,7 +244,7 @@ class Lounge():
             lounges.remove(self)
 
 # Define methods
-async def create_lounge(guild, lounge_name, creator):
+async def create_lounge(message, guild, lounge_name, creator):
     """
     Create a lounge
     :param guild:
@@ -255,21 +255,24 @@ async def create_lounge(guild, lounge_name, creator):
     # Handle setup
     lounge_category = get(guild.categories, name=config["lounges"]["category_name"])
 
-    overwrites = {guild.me: lounge_vc_allow_bot,}
+    if not lounge_category is None:
+        overwrites = {guild.me: lounge_vc_allow_bot,}
 
-    vc = await guild.create_voice_channel(lounge_name,
-                               category=lounge_category,
-                               overwrites=overwrites)
+        vc = await guild.create_voice_channel(lounge_name,
+                                   category=lounge_category,
+                                   overwrites=overwrites)
 
-    overwrites = {guild.default_role: lounge_tc_disallow,
-                  guild.me: lounge_tc_allow}
+        overwrites = {guild.default_role: lounge_tc_disallow,
+                      guild.me: lounge_tc_allow}
 
-    tc = await guild.create_text_channel(lounge_name,
-                              category=lounge_category,
-                              overwrites=overwrites)
+        tc = await guild.create_text_channel(lounge_name,
+                                  category=lounge_category,
+                                  overwrites=overwrites)
 
-    new_lounge = Lounge(vc, tc, creator)
+        new_lounge = Lounge(vc, tc, creator)
 
-    await new_lounge.schedule_empty_check()
+        await new_lounge.schedule_empty_check()
 
-    lounges.append(new_lounge)
+        lounges.append(new_lounge)
+    else:
+        await message.channel.send("This server doesn't support lounges due to a missing category.")
