@@ -5,6 +5,7 @@ import requests
 from config import config, tokens
 import datetime
 import pytz
+from loggers import logger
 
 # Define variables
 stream_panels = []
@@ -27,30 +28,34 @@ async def update_streams():
     """
     while True:
         r = requests.get(config["stream"]["twitch_api_url"], params={'game': config["stream"]["twitch_game"], "client_id": tokens["twitch_client_id"]})
-        r_json = json.loads(r.text)
-        streams = r_json["streams"]
-
-        if len(streams) == 0:
-            stream_header = "**No TagPro streams found :c**\n"
-            stream_message = "Try making your own stream!\n"
+        try:
+            r_json = json.loads(r.text)
+        except ValueError:
+            logger.info("Couldn't load twitch response as json, got HTML status {}.".format(r.status_code))
         else:
-            stream_header = "**Found {} streams.**".format(len(streams))
-            stream_message = ""
-            for stream in streams:
-                stream_name = stream['channel']['status']
-                host = stream['channel']['display_name']
-                url = stream['channel']['url']
-                stream_message += "{} is streaming \"{}\" at: {}\n".format(host, stream_name, url)
+            streams = r_json["streams"]
 
-        d = datetime.datetime.now()
-        timezone = pytz.timezone(config["time_zone"])
-        d_localized = timezone.localize(d)
-        stream_message +=  "*Updated: {}*".format(d_localized.strftime("%I:%M %p %Z").lower())
+            if len(streams) == 0:
+                stream_header = "**No TagPro streams found :c**\n"
+                stream_message = "Try making your own stream!\n"
+            else:
+                stream_header = "**Found {} streams.**".format(len(streams))
+                stream_message = ""
+                for stream in streams:
+                    stream_name = stream['channel']['status']
+                    host = stream['channel']['display_name']
+                    url = stream['channel']['url']
+                    stream_message += "{} is streaming \"{}\" at: {}\n".format(host, stream_name, url)
 
-        for m in stream_panels:
-            embed = m.embeds[0]
-            embed.set_field_at(1, name=stream_header, value=stream_message)
-            await m.edit(embed=embed)
+            d = datetime.datetime.now()
+            timezone = pytz.timezone(config["time_zone"])
+            d_localized = timezone.localize(d)
+            stream_message +=  "*Updated: {}*".format(d_localized.strftime("%I:%M %p %Z").lower())
+
+            for m in stream_panels:
+                embed = m.embeds[0]
+                embed.set_field_at(1, name=stream_header, value=stream_message)
+                await m.edit(embed=embed)
 
         await asyncio.sleep(config["stream"]["update_frequency"])
 
