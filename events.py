@@ -60,7 +60,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith(command_start):
-        logger.info("User {} ran {}.".format(message.author, message.content))
+        logger.info("User {} ran {} on guild {}.".format(message.author, message.content, message.guild.name))
 
         command = message.content.split(" ")[0].replace(command_start, "", 1).lower()
 

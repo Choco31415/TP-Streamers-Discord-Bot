@@ -123,7 +123,7 @@ async def vc_find(message, args):
             await message.channel.send("Found user {} in vc {}!".format(to_find.name, vc.name))
             break
     else:
-        await message.channel.send("Could not find user {}.".format(to_find.name))
+        await message.channel.send("Could not find user {} in a voice lounge.".format(to_find.name))
 register_command(func=vc_find,
                  name="find",
                  category="misc",
