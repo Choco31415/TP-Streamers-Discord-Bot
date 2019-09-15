@@ -59,7 +59,7 @@ async def on_message(message):
 
     if message.author == client.user:
         return
-    if message.content.startswith(command_start):
+    if message.content.startswith(command_start): #TODO: Look at bot command prefix parameter for discord py library
         logger.info("User {} ran {} on guild {}.".format(message.author, message.content, message.guild.name))
 
         command = message.content.split(" ")[0].replace(command_start, "", 1).lower()

@@ -30,11 +30,12 @@ async def update_streams():
         r = requests.get(config["stream"]["twitch_api_url"], params={'game': config["stream"]["twitch_game"], "client_id": tokens["twitch_client_id"]})
         try:
             r_json = json.loads(r.text)
+            streams = r_json["streams"]
         except ValueError:
             logger.info("Couldn't load twitch response as json, got HTML status {}.".format(r.status_code))
+        except KeyError:
+            logger.info("Couldn't load twitch streams, but response is json.")
         else:
-            streams = r_json["streams"]
-
             if len(streams) == 0:
                 stream_header = "**No TagPro streams found :c**\n"
                 stream_message = "Try making your own stream!\n"
